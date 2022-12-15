@@ -21,6 +21,8 @@ class MovieRepository:
         found_movies: list[Movie] = Movie.query.filter(Movie.title.ilike(f'%{title}%')).all()
         return found_movies
 
+    def clear(self):
+        Movie.query.delete()
 
 # Singleton to be used in other modules
 movie_repository_singleton = MovieRepository()
